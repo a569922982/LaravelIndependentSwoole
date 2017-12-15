@@ -1,0 +1,35 @@
+stages:
+  - operation
+
+before_script:
+  - pwd
+
+operation_master:
+  stage: operation
+  script:
+    - cp -rf .env.d .env
+    - cp -rf . /home/yinsheApi/
+    - echo "$(pidof yongApi)"
+    - (if [ "$(pidof yongApi)" != "" ]; then ps -eaf |grep "public/Server/HttpServer.php" | grep -v "grep"| awk '{print $2}'| xargs sudo kill -9;sudo kill -9 `pidof yongApi`; fi)
+    - sudo /home/yinsheApi/public/Server/HttpServer.php
+    - (if [ "$(pidof yongCron)" != "" ]; then ps -eaf |grep "public/Cron/Cron.php" | grep -v "grep"| awk '{print $2}'| xargs sudo kill -9;sudo kill -9 `pidof yongCron`; fi)
+    - sudo /home/yinsheApi/public/Cron/Cron.php
+    - exit 0
+  allow_failure: true
+  environment:
+    name: master
+    url: http://cp.jjcai.net
+  only:
+    - master
+
+operation_test:
+  stage: operation
+  script:
+    - cp -rf .env.d .env
+    - cp -rf . /data/caipiao_dev/
+    - kill -USR1 `pidof caipiao`
+  environment:
+    name: dev
+    url: http://cp.jjcai.net
+  only:
+    - dev

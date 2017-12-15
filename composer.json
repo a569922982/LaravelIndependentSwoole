@@ -1,0 +1,46 @@
+{
+  "name": "chen",
+  "authors": [
+    {
+      "name": "chen",
+      "email": "569922982@qq.com"
+    }
+  ],
+  "require": {
+    "illuminate/validation": "^5.3",
+    "illuminate/database": "^5.3",
+    "illuminate/config": "^5.3",
+    "illuminate/translation": "^5.3",
+    "illuminate/http": "^5.3",
+    "illuminate/pagination": "^5.3",
+    "illuminate/view": "^5.3",
+    "illuminate/queue": "^5.3",
+    "illuminate/redis": "^5.3",
+    "illuminate/encryption": "^5.3",
+    "illuminate/log": "^5.3",
+    "philo/laravel-blade": "^3.0",
+    "vlucas/phpdotenv": "^2.2",
+    "swiftmailer/swiftmailer": "^5.4",
+    "guzzlehttp/guzzle": "^6.2",
+    "monolog/monolog": "^1.21",
+    "fzaninotto/faker": "^1.6",
+    "johnlui/aliyun-oss": "^1.3",
+    "overtrue/wechat": "^4",
+    "daresheep/cos-php-sdk-v4": "^1.0",
+    "intervention/image": "^2.3",
+    "yansongda/pay": "^1.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Model\\": "php/Model",
+      "Http\\": "php/Http",
+      "Prop\\": "php/Prop",
+      "Mobile\\": "public/api_mobile_v1",
+      "Admin\\": "public/api_back_v1",
+      "Pay\\": "public/api_pay_v1"
+    },
+    "files": [
+      "php/helpers.php"
+    ]
+  }
+}
